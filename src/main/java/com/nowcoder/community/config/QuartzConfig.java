@@ -36,12 +36,12 @@ public class QuartzConfig {
         factoryBean.setGroup("alphaJobGroup");
         factoryBean.setDurability(true);
         factoryBean.setRequestsRecovery(true);//任务出现问题时是否恢复
-        return  factoryBean;
+        return factoryBean;
     }
 
     /* 配置Trigger：Trigger就是何时触发定时任务的条件 */
     // @Bean
-    public SimpleTriggerFactoryBean alphaTrigger(JobDetail alphaJobDetail){
+    public SimpleTriggerFactoryBean alphaTrigger(JobDetail alphaJobDetail) {
         SimpleTriggerFactoryBean factoryBean = new SimpleTriggerFactoryBean();
         factoryBean.setJobDetail(alphaJobDetail);
         factoryBean.setName("alphaTrigger");
@@ -60,16 +60,17 @@ public class QuartzConfig {
         factoryBean.setGroup("communityJobGroup");
         factoryBean.setDurability(true);
         factoryBean.setRequestsRecovery(true);
-        return  factoryBean;
+        return factoryBean;
     }
 
-     @Bean
-    public SimpleTriggerFactoryBean postScoreRefreshTrigger(JobDetail postScoreRefreshJobDetail){
+    // 定时任务的触发器
+    @Bean
+    public SimpleTriggerFactoryBean postScoreRefreshTrigger(JobDetail postScoreRefreshJobDetail) {
         SimpleTriggerFactoryBean factoryBean = new SimpleTriggerFactoryBean();
         factoryBean.setJobDetail(postScoreRefreshJobDetail);
         factoryBean.setName("postScoreRefreshTrigger");
         factoryBean.setGroup("communityJobGroup");
-        factoryBean.setRepeatInterval(1000*60*5);
+        factoryBean.setRepeatInterval(1000 * 60 * 5);
         factoryBean.setJobDataMap(new JobDataMap());
         return factoryBean;
     }

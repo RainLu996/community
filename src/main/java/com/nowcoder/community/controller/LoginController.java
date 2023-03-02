@@ -162,6 +162,7 @@ public class LoginController implements CommunityConstant {
     public String logout(@CookieValue("ticket") String ticket, Model model) {
         userService.logout(ticket);
         SecurityContextHolder.clearContext();
-        return "site/login";
+        // 重定向至登录页面。其实就等价于刷新页面至登录页面。将原有的Cookie失效
+        return "redirect:/login";
     }
 }
